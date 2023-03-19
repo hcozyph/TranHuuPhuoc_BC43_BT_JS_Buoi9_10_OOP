@@ -91,7 +91,7 @@ function renderTable(staffArray) {
                     <button onclick = "layThongTin('${staff.accountID}')" class = 'btn btn-warning' data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="fa fa-wrench"></i></button>
                 </td>            
                 <td>
-                    <button class = 'btn btn-danger' onclick = "deleteStaff('${staff.accountID}')"><i class="fa fa-times"></i></button>
+                    <button class = 'btn btn-danger' onclick = "xoaNhanVien('${staff.accountID}')"><i class="fa fa-times"></i></button>
                 </td>
                 
             </tr>

@@ -61,74 +61,15 @@ getEle('btnThemNV').onclick = function () {
 
     //Task 2.7 -- Số giờ làm trong tháng phải tối thiểu từ 80 - 200 giờ
     valid = valid & kiemTra.kiemTraGiaTri(staff.workingHour, 'tbGioLam', 'Số giờ làm', 80, 200);
-    if (!valid) {
-        return;
-    }
 
-    //TASK 3 
+
+    //TASK 3 -- Push
     staffArray.push(staff);
-    console.log(staffArray);
-    renderTable(staffArray);
-    saveLocalStage();
+    console.log(staffArray)
 }
+
+
+
+
+
 // End-creat staff object
-
-// Viết hàm render Xuất dữ liệu mangNhanVien:
-function renderTable(staffArray) {
-    var htmlString = '';
-    for (var index = 0; index < staffArray.length; index++) {
-        var staff = staffArray[index];
-        htmlString += `
-            <tr>
-                <td>${staff.accountID}</td>
-                <td>${staff.name}</td>
-                <td>${staff.email}</td>
-                <td>${staff.workingDate}</td>
-                <td>${staff.position}</td>
-                <td>${staff.totalSalary.toLocaleString()}</td>
-                <td>${staff.typeOfStaff}</td>
-                <td>
-                    <button onclick = "layThongTin('${staff.accountID}')" class = 'btn btn-warning' data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="fa fa-wrench"></i></button>
-                </td>            
-                <td>
-                    <button class = 'btn btn-danger' onclick = "deleteStaff('${staff.accountID}')"><i class="fa fa-times"></i></button>
-                </td>
-                
-            </tr>
-        `
-    }
-    querySelector('tbody').innerHTML = htmlString;
-    return htmlString;
-}
-
-//Hàm lưu dữ liệu người dùng nhập lên Local Store
-function saveLocalStage() {
-    var stringStaffArray = JSON.stringify(staffArray);
-    localStorage.setItem('staffArray', stringStaffArray);
-}
-
-
-//Hàm xuất dữ liệu đã lưu trong localStore ra Table
-function pickUpStorage() {
-    if (localStorage.getItem('staffArray')) {
-        var stringStaffArray = localStorage.getItem('staffArray');
-        staffArray = JSON.parse(stringStaffArray);
-        renderTable(staffArray);
-    }
-}
-pickUpStorage();
-
-//Hàm xóa nhân viên:
-function deleteStaff(deleteAccount) {
-    var indexDel = -1;
-    for (var index = 0; index < staffArray.length; index++) {
-        if (staffArray[index].accountID === deleteAccount) {
-            indexDel = index;
-            break;
-        }
-    }
-    staffArray.splice(indexDel, 1);
-    renderTable(staffArray);
-    saveLocalStage();
-}
-

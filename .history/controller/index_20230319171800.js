@@ -91,7 +91,7 @@ function renderTable(staffArray) {
                     <button onclick = "layThongTin('${staff.accountID}')" class = 'btn btn-warning' data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="fa fa-wrench"></i></button>
                 </td>            
                 <td>
-                    <button class = 'btn btn-danger' onclick = "deleteStaff('${staff.accountID}')"><i class="fa fa-times"></i></button>
+                    <button class = 'btn btn-danger' onclick = "xoaNhanVien('${staff.accountID}')"><i class="fa fa-times"></i></button>
                 </td>
                 
             </tr>
@@ -111,24 +111,24 @@ function saveLocalStage() {
 //Hàm xuất dữ liệu đã lưu trong localStore ra Table
 function pickUpStorage() {
     if (localStorage.getItem('staffArray')) {
-        var stringStaffArray = localStorage.getItem('staffArray');
+        var stringMangNhanVien = localStorage.getItem('staffArray');
         staffArray = JSON.parse(stringStaffArray);
         renderTable(staffArray);
     }
 }
-pickUpStorage();
+layStorage();
 
 //Hàm xóa nhân viên:
-function deleteStaff(deleteAccount) {
+function xoaNhanVien(taiKhoanCanXoa) {
     var indexDel = -1;
-    for (var index = 0; index < staffArray.length; index++) {
-        if (staffArray[index].accountID === deleteAccount) {
+    for (var index = 0; index < mangNhanVien.length; index++) {
+        if (mangNhanVien[index].taiKhoan === taiKhoanCanXoa) {
             indexDel = index;
             break;
         }
     }
-    staffArray.splice(indexDel, 1);
-    renderTable(staffArray);
-    saveLocalStage();
+    mangNhanVien.splice(indexDel, 1);
+    renderTableNhanVien(mangNhanVien);
+    luuLocalStore();
 }
 

@@ -91,7 +91,7 @@ function renderTable(staffArray) {
                     <button onclick = "layThongTin('${staff.accountID}')" class = 'btn btn-warning' data-bs-toggle="modal" data-bs-target="#exampleModal" ><i class="fa fa-wrench"></i></button>
                 </td>            
                 <td>
-                    <button class = 'btn btn-danger' onclick = "deleteStaff('${staff.accountID}')"><i class="fa fa-times"></i></button>
+                    <button class = 'btn btn-danger' onclick = "xoaNhanVien('${staff.accountID}')"><i class="fa fa-times"></i></button>
                 </td>
                 
             </tr>
@@ -118,17 +118,17 @@ function pickUpStorage() {
 }
 pickUpStorage();
 
-//Hàm xóa nhân viên:
-function deleteStaff(deleteAccount) {
-    var indexDel = -1;
-    for (var index = 0; index < staffArray.length; index++) {
-        if (staffArray[index].accountID === deleteAccount) {
-            indexDel = index;
-            break;
-        }
-    }
-    staffArray.splice(indexDel, 1);
-    renderTable(staffArray);
-    saveLocalStage();
-}
+// //Hàm xóa nhân viên:
+// function xoaNhanVien(taiKhoanCanXoa) {
+//     var indexDel = -1;
+//     for (var index = 0; index < mangNhanVien.length; index++) {
+//         if (mangNhanVien[index].taiKhoan === taiKhoanCanXoa) {
+//             indexDel = index;
+//             break;
+//         }
+//     }
+//     mangNhanVien.splice(indexDel, 1);
+//     renderTableNhanVien(mangNhanVien);
+//     luuLocalStore();
+// }
 
